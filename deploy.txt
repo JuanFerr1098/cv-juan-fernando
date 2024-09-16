@@ -1,0 +1,5 @@
+npm run build
+
+update dist/cv.../index.html -> https://juanferr1098.github.io/cv-juan-fernando/
+
+npm run deploy
