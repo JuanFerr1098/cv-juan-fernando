@@ -1,8 +1,6 @@
-npm run build
+ng build --base-href "https://juanferr1098.github.io/cv-juan-fernando/"
 
-update dist/cv.../index.html -> https://juanferr1098.github.io/cv-juan-fernando/
-
-npm run deploy
+npx angular-cli-ghpages --dir=dist/cv-juan-fernando/browser
 
 
 ngextranslate

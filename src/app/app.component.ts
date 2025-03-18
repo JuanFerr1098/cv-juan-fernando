@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  
+
+  constructor(private translate: TranslateService) {
+    this.translate.addLangs(['en', 'es']);
+    this.translate.setDefaultLang('es');
+    this.translate.use('es');
+  }
 }
