@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MultiLanguageService } from '../shared/multi-language.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -11,8 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './about.component.css',
 })
 export class AboutComponent implements OnInit {
-  selectedLanguage = 'es'; 
-  constructor(private readonly languageService: MultiLanguageService) {}
+  constructor() {}
 
   ngOnInit(): void {
     

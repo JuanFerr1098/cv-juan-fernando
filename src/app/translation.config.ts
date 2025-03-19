@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient);
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
 
 export function ApplicationInitializerFactory(
@@ -15,15 +15,14 @@ export function ApplicationInitializerFactory(
 ) {
   return async () => {
     await injector.get(LOCATION_INITIALIZED, Promise.resolve(null));
-
-    const deaultLang = 'es';
-    translate.addLangs(['es', 'en']);
+    const deaultLang = 'en';
+    translate.addLangs(['en', 'es']);
     translate.setDefaultLang(deaultLang);
     try {
       await firstValueFrom(translate.use(deaultLang));
+      console.log(`Successfully initialized ${deaultLang} language.`);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
-    console.log(`Successfully initialized ${deaultLang} language.`);
   };
 }

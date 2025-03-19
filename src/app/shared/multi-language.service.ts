@@ -8,12 +8,15 @@ export class MultiLanguageService {
   constructor(private translate: TranslateService) {}
 
   get localeEvent$() {
-    return this._localeEvent$;
+    return this._localeEvent$.asObservable();
   }
 
   changeLocale(locale: string) {
-    this.translate.use(locale);
-    this._localeEvent$.next(this.getCurrentLanguage());
+    if (this.translate.currentLang !== locale) {
+      this.translate.use(locale);
+      localStorage.setItem('selectedLanguage', locale);
+      this._localeEvent$.next(locale);
+    }
   }
 
   getCurrentLanguage(): string {
@@ -22,5 +25,9 @@ export class MultiLanguageService {
 
   getLanguages() {
     return this.translate.getLangs();
+  }
+
+  getSavedLanguage(): string | null {
+    return localStorage.getItem('selectedLanguage');
   }
 }
