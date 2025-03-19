@@ -1,0 +1,13 @@
+{
+    "about": {
+        "title": "About me",
+        "description": "This is a brief description of myself."
+    },
+    "layout": {
+        "developer": "Full Stack Developer",
+        "lang": "Language"
+    },
+    "resume": {
+        "example": "Example resume"
+    }
+}

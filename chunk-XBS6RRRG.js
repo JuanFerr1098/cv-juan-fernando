@@ -1,0 +1,1 @@
+import{aa as n,eb as o,fb as a,mb as c,qb as r}from"./chunk-4JBTWEMB.js";var m=(()=>{class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-contact"]],standalone:!0,features:[r],decls:2,vars:0,consts:[[2,"color","white"]],template:function(e,p){e&1&&(o(0,"p",0),c(1,"contact works!"),a())}})}return t})();export{m as ContactComponent};

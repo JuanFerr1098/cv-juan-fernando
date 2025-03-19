@@ -1,0 +1,13 @@
+{
+    "about": {
+        "title": "Sobre mi",
+        "description": "Esta es una descripción de mi."
+    },
+    "layout": {
+        "developer": "Desarrollador Full Stack",
+        "lang": "Idioma"
+    },
+    "resume": {
+        "example": "Ejemplo resumen"
+    }
+}
