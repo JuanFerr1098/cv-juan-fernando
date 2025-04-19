@@ -6,6 +6,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MultiLanguageService } from '../shared/multi-language.service';
 import { FormsModule, NgModel } from '@angular/forms';
+import { ThemeService } from '../shared/theme.service';
 
 @Component({
   selector: 'app-layout',
@@ -30,10 +31,13 @@ export class LayoutComponent implements OnInit {
   menuVisible: boolean = true;
   email: string = 'tamayozapatajuanfernando@gmail.com';
   selectedLanguage = 'en';
+  selectedTheme = 'light';
+  isAsideOpen = false;
   listLanguage = [
     { label: 'en', value: 'en' },
     { label: 'es', value: 'es' },
   ];
+  themes = ['light', 'dark', 'custom'];
 
   // Array que contiene los nombres de las páginas de navegación
   navigationLinks: string[] = ['about', 'resume', 'portafolio', 'contact'];
@@ -41,12 +45,15 @@ export class LayoutComponent implements OnInit {
   //activePage: string = 'about'; // Página activa
   constructor(
     private router: Router,
-    private languageService: MultiLanguageService
+    private languageService: MultiLanguageService,
+    private themeService: ThemeService
   ) {}
 
   ngOnInit(): void {
     this.selectedLanguage = this.languageService.getSavedLanguage() ?? 'en';
     this.languageService.changeLocale(this.selectedLanguage);
+    this.selectedTheme = this.themeService.getTheme() ?? 'light';
+    this.themeService.loadTheme(); 
   }
 
   /**
@@ -76,5 +83,15 @@ export class LayoutComponent implements OnInit {
   changeLanguage(event: Event): void {
     this.selectedLanguage = (event.target as HTMLSelectElement).value;
     this.languageService.changeLocale(this.selectedLanguage);
+  }
+
+  toggleAside() {
+    this.isAsideOpen = !this.isAsideOpen;
+  }
+
+  changeTheme(event: Event): void {
+    const theme = (event.target as HTMLSelectElement).value;
+    this.themeService.setTheme(theme);
+    this.themeService.loadTheme();
   }
 }

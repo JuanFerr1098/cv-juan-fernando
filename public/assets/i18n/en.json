@@ -5,7 +5,8 @@
     },
     "layout": {
         "developer": "Full Stack Developer",
-        "lang": "Language"
+        "lang": "Language",
+        "theme": "Theme"
     },
     "resume": {
         "example": "Example resume"

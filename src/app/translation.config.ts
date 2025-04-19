@@ -20,7 +20,6 @@ export function ApplicationInitializerFactory(
     translate.setDefaultLang(deaultLang);
     try {
       await firstValueFrom(translate.use(deaultLang));
-      console.log(`Successfully initialized ${deaultLang} language.`);
     } catch (err) {
       console.error(err);
     }

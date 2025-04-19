@@ -1,11 +1,16 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class MultiLanguageService {
+  defaultLang = 'en';
   _localeEvent$ = new Subject<string>();
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private translate: TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   get localeEvent$() {
     return this._localeEvent$.asObservable();
@@ -27,7 +32,10 @@ export class MultiLanguageService {
     return this.translate.getLangs();
   }
 
-  getSavedLanguage(): string | null {
-    return localStorage.getItem('selectedLanguage');
+  getSavedLanguage(): string {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('selectedLanguage') || this.defaultLang;
+    }
+    return this.defaultLang;
   }
 }
