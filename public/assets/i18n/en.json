@@ -8,6 +8,11 @@
         "lang": "Language",
         "theme": "Theme"
     },
+    "navbar": {
+        "light": "Light",
+        "dark": "Dark",
+        "custom": "Custom"
+    },
     "resume": {
         "example": "Example resume"
     }

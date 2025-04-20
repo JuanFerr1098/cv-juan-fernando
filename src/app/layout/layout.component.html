@@ -1,6 +1,10 @@
+<header class="flex items-center justify-center px-6 py-4 bg-primary text-text">
+  <app-nav-bar></app-nav-bar>
+</header>
 <main class="flex h-screen bg-background text-text">
-  <aside class="fixed md:static inset-y-0 left-0 z-30 w-64 bg-primary text-white p-4 transform md:translate-x-0 transition-transform duration-300 ease-in-out"
-  [class.-translate-x-full]="!isAsideOpen">
+  <aside
+    class="fixed md:static inset-y-0 left-0 z-30 w-64 bg-primary p-4 transform md:translate-x-0 transition-transform duration-300 ease-in-out"
+    [class.-translate-x-full]="!isAsideOpen">
     <div>
       <figure>
         <img src="assets/images/Perfil.png" alt="Juan Fernando Tamayo Zapata" width="80" />
@@ -12,17 +16,9 @@
         <p class="text-secondary">
           {{'layout.developer' | translate}}</p>
       </div>
-      <label>{{'layout.lang' | translate}}</label>
-      <select (change)="changeLanguage($event)" [(ngModel)]="selectedLanguage" >
-        <option *ngFor="let lang of listLanguage" [value]="lang.value">{{lang.label}}</option>
-      </select>
-      <label>{{'layout.theme' | translate}}</label>
-      <select (change)="changeTheme($event)" [(ngModel)]="selectedTheme">
-        <option *ngFor="let theme of themes" [value]="theme">{{ theme }}</option>
-      </select>
       <button (click)="toggleMenu()">
         <span>{{ menuVisible ? "Hide Contacts" : "Show Contacts" }}</span>
-        <!-- <mat-icon>{{ menuVisible ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon> -->
+        <mat-icon>{{ menuVisible ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
       </button>
     </div>
     <div *ngIf="menuVisible">
@@ -46,16 +42,13 @@
           </div>
         </li>
       </ul>
-      <div></div>
-      
     </div>
   </aside>
   <div class="flex-1 flex flex-col">
     <nav class="h-16 bg-secondary flex items-center justify-between px-6 shadow-md">
       <ul class="flex space-x-4">
         <li *ngFor="let page of navigationLinks">
-          <button [ngClass]="{ active: page === activeLink }" (click)="navigateToPage(page)"
-            data-nav-link>
+          <button [ngClass]="{ active: page === activeLink }" (click)="navigateToPage(page)" data-nav-link>
             {{ page | titlecase }}
           </button>
         </li>

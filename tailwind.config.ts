@@ -8,6 +8,7 @@ const config: Config = {
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',
         background: 'var(--background-color)',
+        customfocus: 'var(--focus-color)',
         text: 'var(--text-color)',
       },
     },

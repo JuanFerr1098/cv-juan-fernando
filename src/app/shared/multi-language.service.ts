@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 
@@ -7,21 +6,16 @@ import { Subject } from 'rxjs';
 export class MultiLanguageService {
   defaultLang = 'en';
   _localeEvent$ = new Subject<string>();
-  constructor(
-    private translate: TranslateService,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  constructor(private translate: TranslateService) {}
 
   get localeEvent$() {
-    return this._localeEvent$.asObservable();
+    return this._localeEvent$;
   }
 
   changeLocale(locale: string) {
-    if (this.translate.currentLang !== locale) {
       this.translate.use(locale);
-      localStorage.setItem('selectedLanguage', locale);
       this._localeEvent$.next(locale);
-    }
+    // }
   }
 
   getCurrentLanguage(): string {
@@ -30,12 +24,5 @@ export class MultiLanguageService {
 
   getLanguages() {
     return this.translate.getLangs();
-  }
-
-  getSavedLanguage(): string {
-    if (isPlatformBrowser(this.platformId)) {
-      return localStorage.getItem('selectedLanguage') || this.defaultLang;
-    }
-    return this.defaultLang;
   }
 }

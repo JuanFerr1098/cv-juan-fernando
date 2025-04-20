@@ -1,12 +1,9 @@
-import { NgIf, NgFor, NgClass, CommonModule } from '@angular/common';
+import { NgClass, CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { MultiLanguageService } from '../shared/multi-language.service';
-import { FormsModule, NgModel } from '@angular/forms';
-import { ThemeService } from '../shared/theme.service';
+import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-layout',
@@ -14,14 +11,10 @@ import { ThemeService } from '../shared/theme.service';
   imports: [
     RouterOutlet,
     MatIconModule,
-    NgIf,
-    NgFor,
     NgClass,
     CommonModule,
-    MatCardModule,
     TranslateModule,
-    NgFor,
-    FormsModule
+    NavBarComponent
 ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
@@ -33,27 +26,16 @@ export class LayoutComponent implements OnInit {
   selectedLanguage = 'en';
   selectedTheme = 'light';
   isAsideOpen = false;
-  listLanguage = [
-    { label: 'en', value: 'en' },
-    { label: 'es', value: 'es' },
-  ];
+ 
   themes = ['light', 'dark', 'custom'];
 
-  // Array que contiene los nombres de las páginas de navegación
   navigationLinks: string[] = ['about', 'resume', 'portafolio', 'contact'];
-  activeLink: string = 'about'; // Enlace activo
-  //activePage: string = 'about'; // Página activa
+  activeLink: string = 'about';
   constructor(
     private router: Router,
-    private languageService: MultiLanguageService,
-    private themeService: ThemeService
   ) {}
 
   ngOnInit(): void {
-    this.selectedLanguage = this.languageService.getSavedLanguage() ?? 'en';
-    this.languageService.changeLocale(this.selectedLanguage);
-    this.selectedTheme = this.themeService.getTheme() ?? 'light';
-    this.themeService.loadTheme(); 
   }
 
   /**
@@ -73,25 +55,5 @@ export class LayoutComponent implements OnInit {
    */
   toggleMenu(): void {
     this.menuVisible = !this.menuVisible;
-  }
-
-  initializeLanguage(): void {
-    this.selectedLanguage = this.languageService.getCurrentLanguage();
-    this.languageService.changeLocale(this.selectedLanguage);
-  }
-
-  changeLanguage(event: Event): void {
-    this.selectedLanguage = (event.target as HTMLSelectElement).value;
-    this.languageService.changeLocale(this.selectedLanguage);
-  }
-
-  toggleAside() {
-    this.isAsideOpen = !this.isAsideOpen;
-  }
-
-  changeTheme(event: Event): void {
-    const theme = (event.target as HTMLSelectElement).value;
-    this.themeService.setTheme(theme);
-    this.themeService.loadTheme();
   }
 }

@@ -4,6 +4,7 @@
   --primary-color: #1d4ed8;
   --secondary-color: #64748b;
   --background-color: #ffffff;
+  --focus-color: #3b82f6;
   --text-color: #000000;
 }
 
@@ -11,6 +12,7 @@
   --primary-color: #0ea5e9;
   --secondary-color: #334155;
   --background-color: #1e293b;
+  --focus-color: #7211c2;
   --text-color: #ffffff;
 }
 
@@ -18,6 +20,7 @@
   --primary-color: #9333ea;
   --secondary-color: #6b7280;
   --background-color: #38c01d;
+  --focus-color: #ff0000;
   --text-color: #111827;
 }
 
