@@ -5,7 +5,13 @@
     },
     "layout": {
         "developer": "Desarrollador Full Stack",
-        "lang": "Idioma"
+        "lang": "Idioma",
+        "theme": "Tema"
+    },
+    "navbar": {
+        "light": "Claro",
+        "dark": "Oscuro",
+        "custom": "Personalizado"
     },
     "resume": {
         "example": "Ejemplo resumen"
