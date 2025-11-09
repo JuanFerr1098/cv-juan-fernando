@@ -42,10 +42,12 @@ export class NavBarComponent implements OnInit {
 
   toggleDropdownLang() {
     this.dropdownLang = !this.dropdownLang;
+    this.dropdownTheme = false;
   }
 
   toggleDropdownTheme() {
     this.dropdownTheme = !this.dropdownTheme;
+    this.dropdownLang = false;
   }
 
   selectLanguage(lang?: string) {
